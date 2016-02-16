@@ -31,18 +31,12 @@
   $(document).ready(function () {
     $('#disp_msg').html(msgObj.WELCOME);
   });
+
+  //Starts the game
   $('#start').click(function () {
     reset();
   });
 
-  function main() {
-    canvas = document.createElement("canvas");
-    canvas.width = COL * tileSize;
-    canvas.height = ROW * tileSize;
-    ctx = canvas.getContext("2d");
-    document.body.appendChild(canvas);
-    paintCanvas();
-  }
   //Game Objects
   var canvas,
       ctx,
@@ -55,16 +49,33 @@
   var score = 0;
   var gameThread = null;
 
-  //Draws the canvas
+  function main() {
+    canvas = document.createElement("canvas");
+    canvas.width = COL * tileSize;
+    canvas.height = ROW * tileSize;
+    ctx = canvas.getContext("2d");
+    document.body.appendChild(canvas);
+    paintCanvas();
+  }
+
+  /**
+   * Draws the canvas
+   */
   function paintCanvas() {
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
   }
 
+  /**
+   * Updates the score
+   */
   function updateScore() {
     $('#game_score').find('span').html(score);
   }
 
+  /**
+   * Draws everyting on board
+   */
   function draw() {
     paintCanvas();
     mySnake.crawl();
@@ -73,7 +84,7 @@
       food.cookFood();
     }
     food.drawFood();
-
+    //Check for collisions
     handleCollision();
   }
 
@@ -103,8 +114,6 @@
       $gameOver.html(msgObj.disp_msg);
     }
   }
-
-
   main();
 </script>
 
