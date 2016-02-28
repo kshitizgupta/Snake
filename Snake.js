@@ -157,6 +157,8 @@ Snake.prototype.drawSnake = function () {
       this.ctx.fillStyle = this.snakeColorFirst;
     else
       this.ctx.fillStyle = this.snakeColorSecond;
+    this.ctx.strokeStyle = "black";
+    this.ctx.strokeRect(currPoint.x * tileSize, currPoint.y * tileSize, tileSize, tileSize);
     this.ctx.fillRect(currPoint.x * tileSize, currPoint.y * tileSize, tileSize, tileSize);
   }
 };

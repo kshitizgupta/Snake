@@ -12,6 +12,10 @@
       SCORE : <span></span>
     </div>
 
+    <audio id="main_music" loop>
+      <source src="./been.mp3" type="audio/mp3" />
+    </audio>
+
     <div id="disp_msg" class="col-md-3"></div>
 
   </div>
@@ -19,9 +23,10 @@
     Start
   </button>
 </div>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="./Snake.js"></script>
 <script>
+  var mainMusic = document.getElementById("main_music");
   var msgObj = {
     WELCOME: "Welcome PYTHON, born in JAVA, in relationship with <i>MONGODB</i>, JOB: eat <i>JAVASCRIPT<i>....R u <i>REDIS</i>, press start",
     GAME_OVER: "<i>!!!OOPS!!!</i>GAME OVER. Return with more OBJECTS next time, hail OBJECT ORIENTED PROGRAMMING",
@@ -55,7 +60,16 @@
     canvas.height = ROW * tileSize;
     ctx = canvas.getContext("2d");
     document.body.appendChild(canvas);
+//    drawWelcomeScreen();
     paintCanvas();
+  }
+
+  /**
+   * Draws the canvas
+   */
+  function drawWelcomeScreen() {
+    ctx.font = "30px Arial white";
+    ctx.strokeText("Hello World",10,50);
   }
 
   /**
@@ -99,6 +113,7 @@
 
   function reset() {
     $('#disp_msg').html(msgObj.WELCOME);
+    mainMusic.play();
     score = 0;
     updateScore();
     init();
@@ -106,7 +121,7 @@
 
   function gameOver() {
     var $gameOver = $('#disp_msg');
-
+    mainMusic.pause();
     $gameOver.show();
     if (displayMsg && displayMsg != '') {
       $gameOver.html(displayMsg);
