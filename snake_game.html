@@ -3,6 +3,8 @@
 <head lang="en">
   <meta charset="UTF-8">
   <title>Snake Game</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="http://kshitizgupta.github.io/Snake/Snake.js"></script>
 </head>
 <body style="color: black; font-weight: bold; background-color: aliceblue; font-family: cursive">
 
@@ -23,8 +25,6 @@
     Start
   </button>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="http://kshitizgupta.github.io/Snake/Snake.js"></script>
 <script>
   var mainMusic = document.getElementById("main_music");
   var msgObj = {
@@ -60,7 +60,7 @@
     canvas.height = ROW * tileSize;
     ctx = canvas.getContext("2d");
     document.body.appendChild(canvas);
-//    drawWelcomeScreen();
+    drawWelcomeScreen();
     paintCanvas();
   }
 
